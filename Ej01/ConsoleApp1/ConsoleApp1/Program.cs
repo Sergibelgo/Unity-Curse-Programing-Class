@@ -145,13 +145,15 @@ namespace ConsoleApp1
             //    Thread.Sleep(2000);
             //}
             // Ejerciocio 7
-            Console.WriteLine("Dame un numero");
-            int x = int.Parse(Console.ReadLine());
-            int y = 0;
-            while (y <= x)
+            Console.WriteLine("Dame un numero para multiplicar");
+            int multiplicador = int.Parse(Console.ReadLine());
+            Console.WriteLine("Cuantas veces lo multiplico?");
+            int repeticiones = int.Parse(Console.ReadLine());
+            int contador = 0;
+            while (contador <= repeticiones)
             {
-                Console.WriteLine(y);
-                y++;
+                Console.WriteLine(multiplicador + " x " + contador + " es: " + (multiplicador*contador));
+                contador++;
 
             }
             Thread.Sleep(2000);
