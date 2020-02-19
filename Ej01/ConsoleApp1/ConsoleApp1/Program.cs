@@ -156,7 +156,7 @@ namespace ConsoleApp1
                 contador++;
 
             }
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             
         }
     }
