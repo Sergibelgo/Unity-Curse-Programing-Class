@@ -118,36 +118,44 @@ namespace ConsoleApp1
             //Console.WriteLine("La media es " + ((x + y + z) / 3f));
             //Thread.Sleep(2000);
             //Ejercicio 6
-            float x;
-            Console.WriteLine("Dime tu estatura en cm");
-            x = float.Parse(Console.ReadLine());
-            if (x >= 40)
+            //float x;
+            //Console.WriteLine("Dime tu estatura en cm");
+            //x = float.Parse(Console.ReadLine());
+            //if (x >= 40)
+            //{
+            //    if (x >= 40 && x <= 140)
+            //    {
+            //        Console.WriteLine("JAJA, BAJITO");
+            //        Thread.Sleep(2000);
+            //    }
+            //    else if (x > 140 && x < 200)
+            //    {
+            //        Console.WriteLine("Not bad");
+            //        Thread.Sleep(2000);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("DAAMMM BOY");
+            //        Thread.Sleep(2000);
+            //    }
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Ja ja, muy gracioso");
+            //    Thread.Sleep(2000);
+            //}
+            // Ejerciocio 7
+            Console.WriteLine("Dame un numero");
+            int x = int.Parse(Console.ReadLine());
+            int y = 0;
+            while (y <= x)
             {
-                if (x >= 40 && x <= 140)
-                {
-                    Console.WriteLine("JAJA, BAJITO");
-                    Thread.Sleep(2000);
-                }
-                else if (x > 140 && x < 200)
-                {
-                    Console.WriteLine("Not bad");
-                    Thread.Sleep(2000);
-                }
-                else
-                {
-                    Console.WriteLine("DAAMMM BOY");
-                    Thread.Sleep(2000);
-                }
-            }
-            else
-            {
-                Console.WriteLine("Ja ja, muy gracioso");
-                Thread.Sleep(2000);
-            }
-            
-            {
+                Console.WriteLine(y);
+                y++;
 
             }
+            Thread.Sleep(2000);
+            
         }
     }
 }
