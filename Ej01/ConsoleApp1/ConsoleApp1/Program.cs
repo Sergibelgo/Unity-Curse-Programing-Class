@@ -157,7 +157,16 @@ namespace ConsoleApp1
 
             //}
             //Thread.Sleep(4000);
-            
+            Console.WriteLine("Dame un numero para multiplicar");
+            int multiplicador = int.Parse(Console.ReadLine());
+            Console.WriteLine("Cuantas veces lo multiplico?");
+            int repeticiones = int.Parse(Console.ReadLine());
+            for (int contador = 0 ; contador <= repeticiones; contador++)
+            {
+                Console.WriteLine(multiplicador + " x " + contador + " es: " + (multiplicador * contador));
+            } 
+            Thread.Sleep(4000);
+
         }
     }
 }
