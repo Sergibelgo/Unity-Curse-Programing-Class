@@ -23,20 +23,31 @@ namespace Ejercicio02
         //    Thread.Sleep(4000);
 
         //}
-        //Ejemplo para crear otras funciones distintas a la Main
-        static void Main()
+        ////Ejemplo para crear otras funciones distintas a la Main
+        //static void Main()
+        //{
+        //    Console.WriteLine("Dame millas y las convertire en Km");
+        //    float Muser = float.Parse(Console.ReadLine());
+        //    Console.WriteLine();
+        //    Console.WriteLine(MillastoKm(Muser) + "Km");
+        //    Thread.Sleep(2000);
+        //}
+        ////Para crear otras funciones que no sean la main-->
+        //static float MillastoKm (float Km)
+        //{
+        //    float millas = Km * 1.60934f;
+        //    return millas;
+        //}
+        static void Main (string[] args)
         {
-            Console.WriteLine("Dame millas y las convertire en Km");
-            float Muser = float.Parse(Console.ReadLine());
+            Console.WriteLine("Dame un numero");
+            int numero = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine(MillastoKm(Muser) + "Km");
+            for (; numero>=0; numero--)
+            {
+                Console.WriteLine(numero);
+            }
             Thread.Sleep(2000);
-        }
-        //Para crear otras funciones que no sean la main-->
-        static float MillastoKm (float Km)
-        {
-            float millas = Km * 1.60934f;
-            return millas;
         }
     }
 }
