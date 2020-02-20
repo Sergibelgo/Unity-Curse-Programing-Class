@@ -63,6 +63,7 @@ namespace Ejercicio02
             int[] enemyslive = new int[] {10,0,0,0,0,0,0,0,0,0};
             // Contador para saber cuantos enemigos hay
             int enemycounter = 0;
+            int counter = 0;
             // Comprobante para saber cuando huye el usuario
             bool salida = false;
             // Puntos del jugador que gana por cada enemigo muerto
@@ -70,117 +71,18 @@ namespace Ejercicio02
             // Comprobar que el usuario no haya huido o muerto
             for (; vida > 0 && salida==false;EnemigoSpawn(random))
             {
-                Console.WriteLine();
-                //Opciones del jugador y que decide
-                Console.WriteLine("Los enemigos te rodean, que accion tomaras:");
-                Console.WriteLine("1. Atacar");
-                Console.WriteLine("2. Bloquear");
-                Console.WriteLine("3. Huir");
-                Console.WriteLine("HP: " + vida);
-                //Comprobamos si el jugador a introducido un numero o no
-                Int32.TryParse(Console.ReadLine(),out accion);
-
+                Opciones();
                 switch (accion)
                 {
                     //caso ataque
                     case 1:
-                        //Contador de veces que hara la accion
-                        int counter = 0;
-                        // Aleatorizar el numero
-                        random = r.Next(0, 10);
-                        // Mientras el contador no sea igual al numero de enemigos sigue atacando
-                        while (counter<=enemycounter)
-                        {
-                            // Si el numero aleatorio es mayor a 3 el ataque hacierta
-                            if (random > 3)
-                            {
-                                // Volvemos a ramdomizar el numero
-                                random = r.Next(0, 10);
-                                // Le quitamos esa cantidad de vida al enemigo
-                                enemyslive[counter] = enemyslive[counter] - random;
-                                //Comprobamos si el enemigo a muerto
-                                if (enemyslive[counter] <= 0)
-                                {
-                                    //Informamos al usuario de que el enemigo a muerto
-                                    Console.WriteLine("El enemigo numero " + counter + " ha muerto. El enemigo numero " + enemycounter + " toma su posicion.");
-                                    //Le añadimos un punto
-                                    puntos++;
-                                    //Sustituimos al enemigo muerto por el ultimo enemigo que se halla presentado
-                                    enemyslive[counter] = enemyslive[enemycounter];
-                                    //Quitamos 1 al contador de enemigos
-                                    enemycounter--;
-                                }
-                                else
-                                {
-                                    //Informamos al usuario que ha dado el golpe
-                                    Console.WriteLine("Golpeas al enemigo numero " + counter + " por " + random);
-                                }
-                            }
-                            else
-                            {
-                                //Informamos al usuario que ha fallado el golpe
-                                Console.WriteLine("Fallas al enemigo numero " + counter);
-                            }
-                            counter++;
-                        }
-                        //Reseteamos el counter
-                        counter = 0;
-                        //Mientras el counter sea menos a la cantidad de enemigos estos atacan
-                        while (counter<=enemycounter)
-                        {
-                            //randomizar el numero de nuevo
-                            random = r.Next(0, 10);
-                            //Comprobamos si el enemigo te golpea
-                            if (random>4)
-                            {
-                                // Randomizar el numero
-                                random = r.Next(0, 6);
-                                //Restamos la vida al jugador
-                                vida = vida - random;
-                                //Informamos al jugador
-                                Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
-                                // Añadimos 1 al counter
-                                counter++;
-                            }
-                        }
+                        Atack();
+                        EnemyAtack(0);
                         random = r.Next(0, 10);
                         break;
                     case 2:
-                        //Contador de veces que hara la accion
-                        counter = 0;
-                        // Curamos al jugador
-                        if (vida<15)
-                        {
-                            vida += 3;
-                            //Limitamos al vida a 15
-                            if (vida >= 13)
-                            {
-                                vida = 15;
-                            }
-                        }
-                        //Limitamos la vida a 15
-                        // Aleatorizar el numero
-                        random = r.Next(0, 10);
-                        while (counter <= enemycounter)
-                        {
-                            //Randomizamos el numero
-                            random = r.Next(0, 10);
-                            //Le restamos para bajar la probabilidad de daño
-                            random -= 2;
-                            //Comprobamos si hacierta
-                            if (random > 4)
-                            {
-
-                                random = r.Next(0, 6);
-                                vida = vida - random;
-                                Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
-                            }
-                            else
-                            {
-                                Console.WriteLine("El enemigo numero " + counter + " ha sido bloqueado");
-                            }
-                            counter++;
-                        }
+                        Heal(3);
+                        EnemyAtack(2);
                         break;
                     case 3:
                         salida = true;
@@ -190,23 +92,7 @@ namespace Ejercicio02
                         //Reseteamos el counter
                         counter = 0;
                         //Mientras el counter sea menos a la cantidad de enemigos estos atacan
-                        while (counter <= enemycounter)
-                        {
-                            //randomizar el numero de nuevo
-                            random = r.Next(0, 10);
-                            //Comprobamos si el enemigo te golpea
-                            if (random > 4)
-                            {
-                                // Randomizar el numero
-                                random = r.Next(0, 6);
-                                //Restamos la vida al jugador
-                                vida = vida - random;
-                                //Informamos al jugador
-                                Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
-                                // Añadimos 1 al counter
-                                counter++;
-                            }
-                        }
+                        EnemyAtack(0);
                         random = r.Next(0, 10);
                         break;
                 }
@@ -221,6 +107,19 @@ namespace Ejercicio02
                 Console.WriteLine("Consigues huir, tu puntuacion es de " + puntos);
             }
             Thread.Sleep(6000);
+            //Funcion para que el jugador pueda eleguir opciones
+            void Opciones()
+            {
+                Console.WriteLine();
+                //Opciones del jugador y que decide
+                Console.WriteLine("Los enemigos te rodean, que accion tomaras:");
+                Console.WriteLine("1. Atacar");
+                Console.WriteLine("2. Bloquear");
+                Console.WriteLine("3. Huir");
+                Console.WriteLine("HP: " + vida);
+                //Comprobamos si el jugador a introducido un numero o no
+                Int32.TryParse(Console.ReadLine(), out accion);
+            }
             //Funcion para decidir si aparece o no un enemigo
             void EnemigoSpawn(int RandomSpaw)
             {
@@ -231,6 +130,92 @@ namespace Ejercicio02
                     enemyslive[enemycounter] = 10;
                     Console.WriteLine("Ha aparecido un nuevo enemigo");
                 }
+            }
+            // Funcion de ataque
+            void Atack(){
+                //Contador de veces que hara la accion
+                 counter = 0;
+                // Aleatorizar el numero
+                random = r.Next(0, 10);
+                // Mientras el contador no sea igual al numero de enemigos sigue atacando
+                while (counter <= enemycounter)
+                {
+                    // Si el numero aleatorio es mayor a 3 el ataque hacierta
+                    if (random > 3)
+                    {
+                        // Volvemos a ramdomizar el numero
+                        random = r.Next(0, 10);
+                        // Le quitamos esa cantidad de vida al enemigo
+                        enemyslive[counter] = enemyslive[counter] - random;
+                        //Comprobamos si el enemigo a muerto
+                        if (enemyslive[counter] <= 0)
+                        {
+                            //Informamos al usuario de que el enemigo a muerto
+                            Console.WriteLine("El enemigo numero " + counter + " ha muerto. El enemigo numero " + enemycounter + " toma su posicion.");
+                            //Le añadimos un punto
+                            puntos++;
+                            //Sustituimos al enemigo muerto por el ultimo enemigo que se halla presentado
+                            enemyslive[counter] = enemyslive[enemycounter];
+                            //Quitamos 1 al contador de enemigos
+                            enemycounter--;
+                        }
+                        else
+                        {
+                            //Informamos al usuario que ha dado el golpe
+                            Console.WriteLine("Golpeas al enemigo numero " + counter + " por " + random);
+                        }
+                    }
+                    else
+                    {
+                        //Informamos al usuario que ha fallado el golpe
+                        Console.WriteLine("Fallas al enemigo numero " + counter);
+                    }
+                    counter++;
+                }
+            }
+            //Funcion de ataque enemigo
+            void EnemyAtack(int Defensiva)
+            {
+                // Aleatorizar el numero
+                counter = 0;
+                random = r.Next(0, 10);
+                while (counter <= enemycounter)
+                {
+                    //Randomizamos el numero
+                    random = r.Next(0, 10);
+                    //Le restamos para bajar la probabilidad de daño
+                    random -= Defensiva;
+                    //Comprobamos si hacierta
+                    if (random > 4)
+                    {
+
+                        random = r.Next(0, 6);
+                        vida = vida - random;
+                        Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
+                    }
+                    else
+                    {
+                        Console.WriteLine("El enemigo numero " + counter + " ha sido bloqueado");
+                    }
+                    counter++;
+                }
+            }
+            //Funcion de bloqueo
+            void Heal(int curacion)
+            {
+                //Contador de veces que hara la accion
+                counter = 0;
+                // Curamos al jugador
+                if (vida < 15)
+                {
+                    vida += curacion;
+                    //Limitamos al vida a 15
+                    if (vida >= 13)
+                    {
+                        vida = 15;
+                    }
+                }
+                //Limitamos la vida a 15
             }
         }
         
