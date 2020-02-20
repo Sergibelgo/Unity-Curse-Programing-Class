@@ -190,6 +190,7 @@ namespace Ejercicio02
                     {
 
                         random = r.Next(0, 6);
+                        //Quitarle vida random al usuario
                         vida = vida - random;
                         Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
                     }
