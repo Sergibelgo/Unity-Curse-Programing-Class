@@ -77,7 +77,8 @@ namespace Ejercicio02
                 Console.WriteLine("2. Bloquear");
                 Console.WriteLine("3. Huir");
                 Console.WriteLine("HP: " + vida);
-                accion = int.Parse(Console.ReadLine());
+                //Comprobamos si el jugador a introducido un numero o no
+                Int32.TryParse(Console.ReadLine(),out accion);
 
                 switch (accion)
                 {
@@ -127,12 +128,18 @@ namespace Ejercicio02
                         //Mientras el counter sea menos a la cantidad de enemigos estos atacan
                         while (counter<=enemycounter)
                         {
+                            //randomizar el numero de nuevo
                             random = r.Next(0, 10);
+                            //Comprobamos si el enemigo te golpea
                             if (random>4)
                             {
+                                // Randomizar el numero
                                 random = r.Next(0, 6);
+                                //Restamos la vida al jugador
                                 vida = vida - random;
+                                //Informamos al jugador
                                 Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
+                                // Añadimos 1 al counter
                                 counter++;
                             }
                         }
@@ -142,16 +149,29 @@ namespace Ejercicio02
                         //Contador de veces que hara la accion
                         counter = 0;
                         // Curamos al jugador
-                        vida += 3;
+                        if (vida<15)
+                        {
+                            vida += 3;
+                            //Limitamos al vida a 15
+                            if (vida >= 13)
+                            {
+                                vida = 15;
+                            }
+                        }
+                        //Limitamos la vida a 15
                         // Aleatorizar el numero
                         random = r.Next(0, 10);
                         while (counter <= enemycounter)
                         {
+                            //Randomizamos el numero
                             random = r.Next(0, 10);
+                            //Le restamos para bajar la probabilidad de daño
                             random -= 2;
+                            //Comprobamos si hacierta
                             if (random > 4)
                             {
-                                random = r.Next(0, 4);
+
+                                random = r.Next(0, 6);
                                 vida = vida - random;
                                 Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
                             }
@@ -166,6 +186,28 @@ namespace Ejercicio02
                         salida = true;
                         break;
                     default:
+                        Console.WriteLine("Tu mente se bloquea");
+                        //Reseteamos el counter
+                        counter = 0;
+                        //Mientras el counter sea menos a la cantidad de enemigos estos atacan
+                        while (counter <= enemycounter)
+                        {
+                            //randomizar el numero de nuevo
+                            random = r.Next(0, 10);
+                            //Comprobamos si el enemigo te golpea
+                            if (random > 4)
+                            {
+                                // Randomizar el numero
+                                random = r.Next(0, 6);
+                                //Restamos la vida al jugador
+                                vida = vida - random;
+                                //Informamos al jugador
+                                Console.WriteLine("El enemigo numero " + counter + " te hiere por " + random);
+                                // Añadimos 1 al counter
+                                counter++;
+                            }
+                        }
+                        random = r.Next(0, 10);
                         break;
                 }
 
