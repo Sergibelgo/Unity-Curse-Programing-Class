@@ -42,6 +42,7 @@ namespace Arrays
             //Console.WriteLine(numeros[0] + " y " + numeros02[0]);
             //Thread.Sleep(6000);
             //Ejercicio opcional: El usuario introduce un numero x de numeros hay que ordenarlos de mayor a menor
+
         }
     }
 }
