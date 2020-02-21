@@ -41,8 +41,16 @@ namespace Arrays
             //numeros[0] = 0;
             //Console.WriteLine(numeros[0] + " y " + numeros02[0]);
             //Thread.Sleep(6000);
-            //Ejercicio opcional: El usuario introduce un numero x de numeros hay que ordenarlos de mayor a menor
-
+            int x = 3;
+            int y = 4;
+            Console.WriteLine("Praa " + x + " " + y);
+            int comodin = 0;
+            Console.WriteLine();
+            comodin = y;
+            y = x;
+            x = comodin;
+            Console.WriteLine("Pum " + x + " " + y);
+            Thread.Sleep(5000);
         }
     }
 }
