@@ -143,10 +143,7 @@ namespace Arrays
             Console.WriteLine("Introduce el numero de filas y columnas");
             int numero = int.Parse(Console.ReadLine());
             int numero02 = numero;
-            representador(numero, numero02);
-            Console.WriteLine(resultado[1, 0]);
-            Console.WriteLine(resultado[1, 1]);
-            Console.WriteLine(resultado[1, 0]);
+            int[,] final = representador(numero,numero02);
             Thread.Sleep(5000);
         }
         static int[,] representador(int fila, int columna)
