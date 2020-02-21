@@ -104,42 +104,73 @@ namespace Arrays
             //    }
             ////}
             //Thread.Sleep(5000);
-            int number = int.Parse(Console.ReadLine());
-            int aux = 1;
-            int aux02 = 1;
-            int aux03 = 1;
-            for (int i = 0; i <= number; i++)
-            {
-                aux = 1;
-                for (int j = 0; j < i; j++)
-                {
-                    Console.Write(aux);
-                    aux++;
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            for (int i = 0; i < number; i++)
-            {
-                for (int j = 0; j <= i; j++)
-                {
-                    Console.Write(aux02);
-                }
-                Console.WriteLine();
-                aux02++;
-            }
-            Console.WriteLine();
-            Console.WriteLine();
-            for (int i = 0; i < number; i++)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    Console.Write(aux03++);
-                }
-                Console.WriteLine();
-            }
+            //int number = int.Parse(Console.ReadLine());
+            //int aux = 1;
+            //int aux02 = 1;
+            //int aux03 = 1;
+            //for (int i = 0; i <= number; i++)
+            //{
+            //    aux = 1;
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        Console.Write(aux);
+            //        aux++;
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine();
+            //for (int i = 0; i < number; i++)
+            //{
+            //    for (int j = 0; j <= i; j++)
+            //    {
+            //        Console.Write(aux02);
+            //    }
+            //    Console.WriteLine();
+            //    aux02++;
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine();
+            //for (int i = 0; i < number; i++)
+            //{
+            //    for (int j = 0; j < i; j++)
+            //    {
+            //        Console.Write(aux03++);
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Thread.Sleep(5000);
+            Console.WriteLine("Introduce el numero de filas y columnas");
+            int numero = int.Parse(Console.ReadLine());
+            int numero02 = numero;
+            representador(numero, numero02);
+            Console.WriteLine(resultado[1, 0]);
+            Console.WriteLine(resultado[1, 1]);
+            Console.WriteLine(resultado[1, 0]);
             Thread.Sleep(5000);
         }
+        static int[,] representador(int fila, int columna)
+        {
+            int[,] resultado = new int[fila, columna];
+            for (int i = 0; i < fila; i++)
+            {
+                for (int j = 0; j < columna; j++)
+                {
+                    if (j == i)
+                    {
+                        Console.Write("1");
+                        resultado[i, j] = 1;
+                    }
+                    else
+                    {
+                        Console.Write("0");
+                        resultado[i, j] = 0;
+                    }
+                }
+                Console.WriteLine();
+            }
+            return resultado;
+        }
+
     }
 }
