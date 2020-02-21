@@ -69,25 +69,77 @@ namespace Arrays
             //_xxx-
             //xxxxx
             //int numero = int.Parse(Console.ReadLine());
-            //int aux = 0;
-            //int aux02 = numero / 2;
+            //int aux02 = 0;
+            //int aux03 = 0;
             //char[] letra = new char[numero];
             //for (int i = 0; i < numero; i++)
             //{
-            //    for (int j = 0; j < aux; j++)
+            //    letra[i] = ' ';
+            //}
+            ////if (numero % 2 == 0)
+            ////{
+            //    aux02 = numero / 2;
+            //    aux03 = numero / 2;
+            //    for (int i = 0; i < numero; i++)
             //    {
-            //        if (numero%2==0)
+            //        letra[numero / 2] = 'x';
+            //        for (int j = 0; j < numero; j++)
             //        {
-
+            //            Console.Write(letra[j]);
 
             //        }
-            //    }
-            //    Console.WriteLine();
-            //}
-            int[] numeros = { 1, 2, 3, 0, 1, 4 };
-            Console.Write(numeros);
-            Thread.Sleep(5000);
+            //        if (aux02>0)
+            //        {
+            //            aux02--;
+            //            letra[aux02] = 'x';
 
+            //        }
+            //         if (aux03<numero-1)
+            //        {
+            //            aux03++;
+            //            letra[aux03] = 'x';
+            //        }
+            //        Console.WriteLine();
+
+            //    }
+            ////}
+            //Thread.Sleep(5000);
+            int number = int.Parse(Console.ReadLine());
+            int aux = 1;
+            int aux02 = 1;
+            int aux03 = 1;
+            for (int i = 0; i <= number; i++)
+            {
+                aux = 1;
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(aux);
+                    aux++;
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            for (int i = 0; i < number; i++)
+            {
+                for (int j = 0; j <= i; j++)
+                {
+                    Console.Write(aux02);
+                }
+                Console.WriteLine();
+                aux02++;
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            for (int i = 0; i < number; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(aux03++);
+                }
+                Console.WriteLine();
+            }
+            Thread.Sleep(5000);
         }
     }
 }
